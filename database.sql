@@ -7,6 +7,8 @@ CREATE TABLE documents(
     doc_id SERIAL PRIMARY KEY,
     dc_id INT,
     reg_number INT,
+    description VARCHAR(255),
+    uploaded_date DATE DEFAULT NOW(),
     doc_path VARCHAR(255),
     CONSTRAINT fk_document_categories
     FOREIGN KEY (dc_id)
@@ -25,8 +27,8 @@ CREATE TABLE staffs (
     staff_name VARCHAR(50),
     staff_email VARCHAR(50),
     phone VARCHAR(50),
-    city VARCHAR(50),
     passcode VARCHAR(50),
+    isAdmin BOOLEAN,
     CONSTRAINT fk_role
     FOREIGN KEY (role_id)
     REFERENCES roles(role_id)
@@ -51,3 +53,5 @@ CREATE TABLE students(
     student_email VARCHAR(50),
     passcode VARCHAR(50)
 );
+
+-- psql --host=ec2-54-157-100-65.compute-1.amazonaws.com --port=5432 --username=cghanjgqtyibex --password --dbname=dfc4k2hnr6216c
